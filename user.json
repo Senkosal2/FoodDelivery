@@ -1,0 +1,8 @@
+{
+    "id": 1,
+    "username": "Admin",
+    "password": "S3cur3P@$$w0rd",
+    "email": "admin@email.com",
+    "phone_number": "0123456789",
+    "dob": "2000/01/01"
+}

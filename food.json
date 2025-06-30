@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "name": "burger",
+    "price": 5.3,
+    "like": 0,
+    "food_category": 1,
+    "description": "this is burger",
+    "picture": "burger.jpeg"
+}

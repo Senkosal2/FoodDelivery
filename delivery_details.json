@@ -1,0 +1,8 @@
+{
+    "delivery": 1,
+    "accept_order": true,
+    "is_preparing_order": true,
+    "delivery_on_the_way": true,
+    "delivered": true,
+    "estimated_delivery": "15 min"
+}

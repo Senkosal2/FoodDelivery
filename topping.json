@@ -1,0 +1,6 @@
+{
+    "id": 1,   
+    "name": "Pepper",
+    "price": 0.1,
+    "food": [1]
+}
