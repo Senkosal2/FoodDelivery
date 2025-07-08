@@ -1,12 +1,13 @@
 package group.fooddelivery.main.entity;
-import java.util.List;
 
+import java.sql.Date;
+import java.sql.Time;
+
+import group.fooddelivery.main.utils.Global;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,19 +17,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Food {
-    @Id
+@NoArgsConstructor
+public class Order {
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private double price;
-    private String description;
-    private long like;
+    private String OrderNumber;
     @OneToMany
-    @JoinColumn(name ="category_id" )
-    private List<Category> category;
-    private String imageUrl;
-    private List<Topping> toppings;
+    private OrderDetails orderDetails;
+    private Date orderDate;
+    private Time orderTime;
+    private Global.orderStatus status;
 }
