@@ -2,16 +2,18 @@ package group.fooddelivery.main.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name="tblTopping")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,5 +24,7 @@ public class Topping {
     private int id;
     private String name;
     private double price;
+    // all operation, remove(delete), merge(update), detach(not relate), persist(not effect related), refresh(refresh updated)
+    @ManyToMany(mappedBy="toppings", cascade=CascadeType.ALL) 
     private List<Food> foods;
 }

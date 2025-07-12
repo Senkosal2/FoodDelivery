@@ -2,6 +2,7 @@ package group.fooddelivery.main.entity;
 
 import java.sql.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name="tblUser")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class User {
     private int id;
     private String username;
     private String password;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Address address;
     private Date dateOfBirth;
     private String email;

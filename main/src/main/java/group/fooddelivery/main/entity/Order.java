@@ -2,6 +2,7 @@ package group.fooddelivery.main.entity;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 import group.fooddelivery.main.utils.Global;
 import jakarta.persistence.Entity;
@@ -14,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name="tblOrder")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,8 +25,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String OrderNumber;
-    @OneToMany
-    private OrderDetails orderDetails;
+    @OneToMany(mappedBy="order") // map by field name
+    private List<OrderDetails> orderDetails;
     private Date orderDate;
     private Time orderTime;
     private Global.orderStatus status;

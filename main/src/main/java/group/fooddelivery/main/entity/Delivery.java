@@ -1,16 +1,20 @@
 package group.fooddelivery.main.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name="tblDelivery")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -21,6 +25,6 @@ public class Delivery {
     private int id;
     @OneToOne
     private Order order;
-    @OneToOne
-    private DeliveryDetails deliveryDetails;
+    @OneToMany(mappedBy="delivery", cascade=CascadeType.ALL) // map by field name in related model
+    private List<DeliveryDetail> deliveryDetails;
 }
