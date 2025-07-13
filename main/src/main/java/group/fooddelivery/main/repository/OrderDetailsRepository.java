@@ -3,9 +3,9 @@ package group.fooddelivery.main.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import group.fooddelivery.main.entity.OrderDetails;
+import group.fooddelivery.main.entity.OrderDetail;
 
 @Repository
-public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Integer>{
+public interface OrderDetailsRepository extends JpaRepository<OrderDetail, Integer>{
     
 }
