@@ -1,19 +1,24 @@
 package group.fooddelivery.main.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import group.fooddelivery.main.dto.UserDTO;
-import group.fooddelivery.main.entity.User;
+import group.fooddelivery.main.dto.UserDetailDTO;
+import group.fooddelivery.main.entity.UserDetail;
 
 @Component
 public class UserMapper {
     
     @Autowired
+    @Lazy
     private AddressMapper addressMapper;
 
-    public User toUser(UserDTO userDTO) {
-        User user = new User();
+    public UserDetail toUser(UserDetailDTO userDTO) {
+        UserDetail user = new UserDetail();
         user.setId(userDTO.getId());
         user.setUsername(userDTO.getUsername());
         user.setEmail(userDTO.getEmail());
@@ -21,11 +26,21 @@ public class UserMapper {
         user.setPhoneNumber(userDTO.getPhoneNumber());
         user.setPassword(userDTO.getPassword());
         user.setAddress(addressMapper.toAddress(userDTO.getAddressDTO()));
+        user.setUserType(userDTO.getUserType());
 
         return user;
     }
-    public UserDTO toUserDTO(User user) {
-        UserDTO userDTO = new UserDTO();
+
+    public List<UserDetail> toUsers(List<UserDetailDTO> userDTOs) {
+        List<UserDetail> users = new ArrayList<>();
+        for (UserDetailDTO userDTO : userDTOs) {
+            users.add(toUser(userDTO));
+        }
+        return users;
+    }
+
+    public UserDetailDTO toUserDTO(UserDetail user) {
+        UserDetailDTO userDTO = new UserDetailDTO();
         userDTO.setId(user.getId());
         userDTO.setUsername(user.getUsername());
         userDTO.setPassword(user.getPassword());
@@ -33,6 +48,15 @@ public class UserMapper {
         userDTO.setDateOfBirth(user.getDateOfBirth());
         userDTO.setPhoneNumber(user.getPhoneNumber());
         userDTO.setAddressDTO(addressMapper.toAddressDTO(user.getAddress()));
+        userDTO.setUserType(user.getUserType());
         return userDTO;
+    }
+
+    public List<UserDetailDTO> toUserDTOs(List<UserDetail> users) {
+        List<UserDetailDTO> userDTOs = new ArrayList<>();
+        for (UserDetail user : users) {
+            userDTOs.add(toUserDTO(user));
+        }
+        return userDTOs;
     }
 }

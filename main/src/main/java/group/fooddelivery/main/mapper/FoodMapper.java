@@ -3,6 +3,7 @@ package group.fooddelivery.main.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +14,11 @@ import group.fooddelivery.main.entity.Food;
 public class FoodMapper {
 
     @Autowired
+    @Lazy
     private CategoryMapper categoryMapper;
 
     @Autowired
+    @Lazy
     private ToppingMapper toppingMapper;
     
     public Food toFood(FoodDTO foodDTO) {
@@ -24,7 +27,7 @@ public class FoodMapper {
         food.setDescription(foodDTO.getDescription());
         food.setImageUrl(foodDTO.getImageUrl());
         food.setName(foodDTO.getName());
-        food.setLike(foodDTO.getLike());
+        food.setLikes(foodDTO.getLike());
         food.setPrice(foodDTO.getPrice());
         food.setCategories(categoryMapper.toCategories(foodDTO.getCategoriesDTO()));
         food.setToppings(toppingMapper.toToppings(foodDTO.getToppingDTOs()));
@@ -46,7 +49,7 @@ public class FoodMapper {
         foodDTO.setDescription(food.getDescription());
         foodDTO.setImageUrl(food.getImageUrl());
         foodDTO.setName(food.getName());
-        foodDTO.setLike(food.getLike());
+        foodDTO.setLike(food.getLikes());
         foodDTO.setPrice(food.getPrice());
         foodDTO.setCategoriesDTO(categoryMapper.toCategoryDTOs(food.getCategories()));
         foodDTO.setToppingDTOs(toppingMapper.toToppingDTOs(food.getToppings()));

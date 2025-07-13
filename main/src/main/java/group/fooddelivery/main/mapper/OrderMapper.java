@@ -1,6 +1,8 @@
 package group.fooddelivery.main.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import group.fooddelivery.main.dto.OrderDTO;
@@ -9,8 +11,9 @@ import group.fooddelivery.main.entity.Order;
 @Component
 public class OrderMapper {
 
-    @Autowired
-    private OrderDetailMapper orderDetailMapper;
+    // @Autowired
+    // @Lazy
+    // private OrderDetailMapper orderDetailMapper;
 
     public Order toOrder(OrderDTO orderDTO) {
         Order order = new Order();
@@ -19,9 +22,17 @@ public class OrderMapper {
         order.setOrderNumber(orderDTO.getOrderNumber());
         order.setOrderTime(orderDTO.getOrderTime());
         order.setStatus(orderDTO.getStatus());
-        order.setOrderDetails(orderDetailMapper.toOrderDetails(orderDTO.getOrderDetailsDTOs()));
+        // order.setOrderDetails(orderDetailMapper.toOrderDetails(orderDTO.getOrderDetailsDTOs()));
         
         return order;
+    }
+
+    public List<Order> toOrders(List<OrderDTO> orderDTOs) {
+        List<Order> orders = new ArrayList<>();
+        for (OrderDTO orderDTO : orderDTOs) {
+            orders.add(toOrder(orderDTO));
+        }
+        return orders;
     }
 
     public OrderDTO toOrderDTO(Order order) {
@@ -31,8 +42,16 @@ public class OrderMapper {
         orderDTO.setOrderNumber(order.getOrderNumber());
         orderDTO.setOrderTime(order.getOrderTime());
         orderDTO.setStatus(order.getStatus());
-        orderDTO.setOrderDetailsDTOs(orderDetailMapper.toOrderDetailDTOs(order.getOrderDetails()));
+        // orderDTO.setOrderDetailsDTOs(orderDetailMapper.toOrderDetailDTOs(order.getOrderDetails()));
 
         return orderDTO;
+    }
+
+    public List<OrderDTO> toOrderDTOs(List<Order> orders) {
+        List<OrderDTO> orderDTOs = new ArrayList<>();
+        for (Order order : orders) {
+            orderDTOs.add(toOrderDTO(order));
+        }
+        return orderDTOs;
     }
 }

@@ -3,6 +3,7 @@ package group.fooddelivery.main.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +14,11 @@ import group.fooddelivery.main.entity.OrderDetail;
 public class OrderDetailMapper {
 
     @Autowired
+    @Lazy
     private FoodMapper foodMapper;
 
     @Autowired
+    @Lazy
     private OrderMapper orderMapper;
     
     public OrderDetail toOrderDetail(OrderDetailDTO orderDetailDTO) {
