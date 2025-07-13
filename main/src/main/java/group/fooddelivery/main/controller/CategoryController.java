@@ -15,36 +15,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import group.fooddelivery.main.dto.UserDetailDTO;
+import group.fooddelivery.main.dto.CategoryDTO;
 import group.fooddelivery.main.dto.response.SuccessResponse;
-import group.fooddelivery.main.service.UserService;
+import group.fooddelivery.main.service.CategoryService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/users")
+@RequestMapping("api/categories")
 @Validated // ensure validation
-public class UserController {
+public class CategoryController {
 
     @Autowired
-    private UserService userService;
+    private CategoryService categoryService;
 
     @GetMapping
-    public ResponseEntity<SuccessResponse<List<UserDetailDTO>>> getUsers() {
-        List<UserDetailDTO> users = userService.getUsers();
-        SuccessResponse<List<UserDetailDTO>> successResponse = new SuccessResponse<>();
-        successResponse.setData(users);
+    public ResponseEntity<SuccessResponse<List<CategoryDTO>>> getCategorys() {
+        List<CategoryDTO> categorys = categoryService.getCategories();
+        SuccessResponse<List<CategoryDTO>> successResponse = new SuccessResponse<>();
+        successResponse.setData(categorys);
         successResponse.setStatus(HttpStatus.OK);
         successResponse.setStatusCode(200);
 
         return new ResponseEntity<>(successResponse, HttpStatus.OK);
     }
     
-    @GetMapping("/{userId}")
-    public ResponseEntity<SuccessResponse<UserDetailDTO>> getUserById(
-        @PathVariable int UserId) {
-        UserDetailDTO user = userService.getUser(UserId);
-        SuccessResponse<UserDetailDTO> successResponse = new SuccessResponse<>();
-        successResponse.setData(user);
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<SuccessResponse<CategoryDTO>> getCategoryById(
+        @PathVariable int CategoryId) {
+        CategoryDTO category = categoryService.getCategory(CategoryId);
+        SuccessResponse<CategoryDTO> successResponse = new SuccessResponse<>();
+        successResponse.setData(category);
         successResponse.setStatus(HttpStatus.OK);
         successResponse.setStatusCode(200);
         
@@ -52,43 +52,42 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<SuccessResponse<Void>> createUser(
-        @Valid @RequestBody UserDetailDTO userDTO
+    public ResponseEntity<SuccessResponse<Void>> createCategory(
+        @Valid @RequestBody CategoryDTO categoryDTO
     ) {
-        userService.createUser(userDTO);
+        categoryService.createCategory(categoryDTO);
 
         SuccessResponse<Void> successResponse = new SuccessResponse<>();
-        // successResponse.setData(user);
-        successResponse.setMessage("User created successfully!");
+        successResponse.setMessage("Category created successfully!");
         successResponse.setStatus(HttpStatus.CREATED);
         successResponse.setStatusCode(201);
         
         return new ResponseEntity<>(successResponse, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{userId}")
-    public ResponseEntity<SuccessResponse<Void>> updateUser(
-        @PathVariable int userId,
-        @RequestBody UserDetailDTO userDTO
+    @PutMapping("/update/{categoryId}")
+    public ResponseEntity<SuccessResponse<Void>> updateCategory(
+        @PathVariable int categoryId,
+        @Valid @RequestBody CategoryDTO categoryDTO
     ) {
-        userService.updateUser(userId, userDTO);
+        categoryService.updateCategory(categoryId, categoryDTO);
 
         SuccessResponse<Void> successResponse = new SuccessResponse<>();
-        successResponse.setMessage("User updated successfully!");
+        successResponse.setMessage("Category updated successfully!");
         successResponse.setStatus(HttpStatus.OK);
         successResponse.setStatusCode(200);
 
         return new ResponseEntity<>(successResponse, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{userId}")
-    public ResponseEntity<SuccessResponse<Void>> deleteUser(
-        @PathVariable int userId
+    @DeleteMapping("/delete/{categoryId}")
+    public ResponseEntity<SuccessResponse<Void>> deleteCategory(
+        @PathVariable int categoryId
     ) {
-        userService.deleteUser(userId);
+        categoryService.deleteCategory(categoryId);
 
         SuccessResponse<Void> successResponse = new SuccessResponse<>();
-        successResponse.setMessage("User deleted successfully!");
+        successResponse.setMessage("Category deleted successfully!");
         successResponse.setStatus(HttpStatus.NO_CONTENT);
         successResponse.setStatusCode(204);
 
