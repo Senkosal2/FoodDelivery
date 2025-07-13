@@ -1,13 +1,10 @@
 package group.fooddelivery.main.entity;
 
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +22,6 @@ public class Delivery {
     private int id;
     @OneToOne
     private Order order;
-    @OneToMany(mappedBy="delivery", cascade=CascadeType.ALL) // map by field name in related model
-    private List<DeliveryDetail> deliveryDetails;
+    // @OneToMany(mappedBy="delivery", cascade=CascadeType.ALL) // map by field name in related model
+    // private List<DeliveryDetail> deliveryDetails;
 }

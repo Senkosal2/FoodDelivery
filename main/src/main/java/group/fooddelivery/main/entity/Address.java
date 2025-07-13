@@ -1,11 +1,9 @@
 package group.fooddelivery.main.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +19,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String address;
-    @OneToOne(cascade=CascadeType.ALL)
-    private User user;
+    // to prevent circular dependencies - renmove bi-directional relationship
+    // @OneToOne(cascade=CascadeType.ALL)
+    // private User user;
 }

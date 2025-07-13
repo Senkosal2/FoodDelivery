@@ -31,7 +31,7 @@ public class Review {
     // persist = when remove the user from here, ensure that the user is not update or remove as well, only review is changed
     @ManyToOne(cascade=CascadeType.PERSIST) 
     @JoinColumn(name="user_id")
-    private User user;
+    private UserDetail user;
     @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="food_id")
     private Food food;

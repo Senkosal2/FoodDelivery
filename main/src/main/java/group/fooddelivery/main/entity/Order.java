@@ -2,14 +2,14 @@ package group.fooddelivery.main.entity;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
 
 import group.fooddelivery.main.utils.Global;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +25,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String OrderNumber;
-    @OneToMany(mappedBy="order") // map by field name
-    private List<OrderDetails> orderDetails;
+    // @OneToMany(mappedBy="order") // map by field name
+    // private List<OrderDetail> orderDetails;
     private Date orderDate;
     private Time orderTime;
-    private Global.orderStatus status;
+
+    @Enumerated(EnumType.STRING)
+    private Global.OrderStatus status;
 }

@@ -1,13 +1,9 @@
 package group.fooddelivery.main.entity;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +20,6 @@ public class Category {
     private int id;
     private String name;
     private String description;
-    @ManyToMany(mappedBy="categories", cascade=CascadeType.ALL) // ensure data integrity
-    private List<Food> foods;
+    // @ManyToMany(mappedBy="categories", cascade=CascadeType.ALL) // ensure data integrity
+    // private List<Food> foods;
 }

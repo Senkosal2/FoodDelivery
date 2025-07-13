@@ -9,12 +9,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="tblFood")
+@Entity
+@Table(name = "tbl_food")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,7 +28,7 @@ public class Food {
     private String name;
     private double price;
     private String description;
-    private long like;
+    private long likes;
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
         name="food_category",
