@@ -1,7 +1,6 @@
 package group.fooddelivery.main.dto;
 
-import java.util.List;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CategoryDTO {
     private int id;
+
+    @NotNull(message = "Category name cannot be empty!")
     private String name;
+
     private String description;
-    private List<FoodDTO> foodDTOs;
+    // private List<FoodDTO> foodDTOs;
 }

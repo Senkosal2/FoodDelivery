@@ -2,7 +2,6 @@ package group.fooddelivery.main.dto;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
 
 import group.fooddelivery.main.utils.Global;
 import lombok.AllArgsConstructor;
@@ -17,8 +16,8 @@ import lombok.Setter;
 public class OrderDTO {
     private int id;
     private String OrderNumber;
-    private List<OrderDetailsDTO> orderDetailsDTOs;
+    // private List<OrderDetailDTO> orderDetailsDTOs;
     private Date orderDate;
     private Time orderTime;
-    private Global.orderStatus status;
+    private Global.OrderStatus status;
 }

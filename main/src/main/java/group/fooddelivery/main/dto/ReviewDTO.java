@@ -18,6 +18,6 @@ public class ReviewDTO {
     private Time reviewTime;
     private String comments;
     private float rating;
-    private UserDTO userDTO;
+    private UserDetailDTO userDTO;
     private FoodDTO foodDTO;
 }
