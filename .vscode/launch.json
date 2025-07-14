@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "UserDTO",
+            "request": "launch",
+            "mainClass": "group.fooddelivery.main.dto.UserDTO",
+            "projectName": "main"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MainApplication<main>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "group.fooddelivery.main.MainApplication",
+            "projectName": "main",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
