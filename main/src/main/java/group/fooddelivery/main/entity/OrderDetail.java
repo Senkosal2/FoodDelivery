@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,13 +24,18 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_detail_id")
     private int id;
+    
     // ensure that only order_details is updated when make changes, no change to parent(Order)
     @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="order_id")
+    @NotNull
     private Order order;
+
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="food_id")
+    @NotNull
     private Food food;
+
     private int quantity;
 
     

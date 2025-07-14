@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,11 @@ public class Review {
     private int id;
     private Date reviewDate;
     private Time reviewTime;
+
+    @NotNull
     private String comments;
+
+    @NotNull
     private float rating;
     // persist = when remove the user from here, ensure that the user is not update or remove as well, only review is changed
     @ManyToOne(cascade=CascadeType.PERSIST) 

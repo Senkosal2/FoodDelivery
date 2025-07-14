@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class DeliveryDetail {
     // ensure only the delivery_details is update, not effect delivery records
     @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="delivery_id")
+    @NotNull
     private Delivery delivery;
     private boolean isAcceptOrder;
     private boolean isPreparingOrder;

@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,23 +26,33 @@ public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private double price;
+
     private String description;
     private long likes;
+
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
         name="food_category",
         joinColumns=@JoinColumn(name="food_id"),
         inverseJoinColumns=@JoinColumn(name="category_id")
     )
+    @NotNull
     private List<Category> categories;
+
     private String imageUrl;
+
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
         name="food_topping",
         joinColumns=@JoinColumn(name="food_id"),
         inverseJoinColumns=@JoinColumn(name="topping_id")
     )
+    @NotNull
     private List<Topping> toppings;
 }
