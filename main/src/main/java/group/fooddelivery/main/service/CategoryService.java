@@ -47,7 +47,7 @@ public class CategoryService {
     @Transactional
     public void updateCategory(int categoryId, CategoryDTO categoryDTO) {
         Category existingCategory = categoryRepository.findById(categoryId).orElseThrow(
-            () -> new NotFoundException("User does not exist!")
+            () -> new NotFoundException("Category does not exist!")
         );
         existingCategory.setDescription(categoryDTO.getDescription());
         existingCategory.setName(categoryDTO.getName());
@@ -58,7 +58,7 @@ public class CategoryService {
     @Transactional
     public void deleteCategory(int categoryId) {
         Category existingCategory = categoryRepository.findById(categoryId).orElseThrow(
-            () -> new NotFoundException("User does not exist!")
+            () -> new NotFoundException("Category does not exist!")
         );
         categoryRepository.delete(existingCategory);
     }
