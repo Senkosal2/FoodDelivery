@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .requestMatchers("api/users/create").permitAll()
                 .requestMatchers("api/users/**").hasRole(Global.UserType.ADMIN.name())
                 .requestMatchers("api/categories/**").not().hasRole(Global.UserType.USER.name())
-                .anyRequest().authenticated())
+                .anyRequest().permitAll())
                 .formLogin(login -> login.permitAll())
                 .logout(logout -> logout.permitAll());
 

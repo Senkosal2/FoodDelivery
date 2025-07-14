@@ -31,7 +31,8 @@ public class ErrorExceptionController implements ErrorController {
             invalidResponse.setStatusCode(404);
             // invalidResponse.setMessage("Current uri does not exist: " + request.getRequestURL());
             invalidResponse.setUri(List.of(
-                "/api/users"
+                "/api/users",
+                "/api/addresses"
             ));
         } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
             invalidResponse = new InvalidResponse<>();
